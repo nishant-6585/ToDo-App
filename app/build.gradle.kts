@@ -82,4 +82,8 @@ dependencies {
     implementation(libs.dagger.hilt)
     annotationProcessor(libs.dagger.hilt.compiler)
 
+    //navigation with compose
+    implementation(libs.androidx.navigation.compose)
+
+
 }

@@ -12,6 +12,7 @@ room_version = "2.6.1"
 datastore = "1.1.1"
 hiltVersion = "2.44"
 kspPlugin = "1.9.24-1.0.20"
+nav_version = "2.7.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +35,7 @@ androidx-room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "
 androidx-datastore = {group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore"}
 dagger-hilt = {group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion"}
 dagger-hilt-compiler = {group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion"}
+androidx-navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version.ref = "nav_version"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
