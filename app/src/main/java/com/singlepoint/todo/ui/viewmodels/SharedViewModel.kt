@@ -36,6 +36,13 @@ class SharedViewModel @Inject constructor(
         } catch (e: Exception){
             _allTasks.value = RequestState.Error(e)
         }
+    }
 
+    fun getSelectedTask(
+        taskId: Int
+    ) {
+        viewModelScope.launch {
+            repository.getSelectedTask(taskId)
+        }
     }
 }

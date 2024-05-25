@@ -38,6 +38,7 @@ import com.singlepoint.todo.data.models.Priority
 import com.singlepoint.todo.ui.theme.LARGE_PADDING
 import com.singlepoint.todo.ui.theme.TOP_APP_BAR_HEIGHT
 import com.singlepoint.todo.ui.theme.Typography
+import com.singlepoint.todo.ui.theme.topAppBarBackgroundColor
 import com.singlepoint.todo.ui.theme.topAppBarContentColor
 import com.singlepoint.todo.ui.viewmodels.SharedViewModel
 import com.singlepoint.todo.util.SearchAppBarState
@@ -99,10 +100,8 @@ fun DefaultListAppBar(
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color.Blue,
-            titleContentColor = Color.White,
-            navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
-            actionIconContentColor = MaterialTheme.colorScheme.onSecondary
+            containerColor = MaterialTheme.colorScheme.topAppBarBackgroundColor, // Set the background color here
+            titleContentColor = MaterialTheme.colorScheme.topAppBarContentColor // Set the title content color here
         ),
     )
 }
