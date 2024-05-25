@@ -1,5 +1,6 @@
 package com.singlepoint.todo.navigation.destination
 
+import android.util.Log
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -17,8 +18,12 @@ fun NavGraphBuilder.taskComposable(
             type = NavType.IntType
         }),
         deepLinks = emptyList(),
-        content = {
-
+        content = { navBackStackEntry ->
+            val taskId = navBackStackEntry.arguments!!.getInt(Constants.TASK_ARGUMENT_KEY)
+            Log.d("taskId", taskId.toString())
+            /*LaunchedEffect(key1 = taskId) {
+                sharedViewModel.getSelectedTask(taskId = taskId)
+            }*/
         }
     )
 }
