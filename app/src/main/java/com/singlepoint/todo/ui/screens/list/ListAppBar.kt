@@ -17,8 +17,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -40,10 +38,10 @@ import com.singlepoint.todo.data.models.Priority
 import com.singlepoint.todo.ui.theme.LARGE_PADDING
 import com.singlepoint.todo.ui.theme.TOP_APP_BAR_HEIGHT
 import com.singlepoint.todo.ui.theme.Typography
-import com.singlepoint.todo.ui.theme.topAppBarBackgroundColor
 import com.singlepoint.todo.ui.theme.topAppBarContentColor
 import com.singlepoint.todo.ui.viewmodels.SharedViewModel
 import com.singlepoint.todo.util.SearchAppBarState
+import com.singlepoint.todo.util.TrailingIconState
 
 
 @Composable
@@ -89,7 +87,7 @@ fun DefaultListAppBar(
     TopAppBar(
         title = {
             Text(
-                text = "Tasks",
+                text = stringResource(id = R.string.list_screen_title),
                 color = MaterialTheme.colorScheme.topAppBarContentColor
             )
         },
@@ -249,6 +247,11 @@ fun AppSearchBar(
     onCloseClicked: () -> Unit,
     onSearchClicked: (String) -> Unit
 ) {
+
+    var trailingIconState by remember {
+        mutableStateOf(TrailingIconState.READY_TO_DELETE)
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -266,7 +269,7 @@ fun AppSearchBar(
                 Text(
                     modifier = Modifier
                         .alpha(0.5f),
-                    text = "Search",
+                    text = stringResource(id = R.string.search_placeholder),
                     color = Color.White
                 )
             },
@@ -285,7 +288,7 @@ fun AppSearchBar(
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Search,
-                        contentDescription = "Search Icon",
+                        contentDescription = stringResource(id = R.string.search_icon),
                         tint = MaterialTheme.colorScheme.topAppBarContentColor
                     )
                 }
@@ -293,12 +296,25 @@ fun AppSearchBar(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        onCloseClicked()
+                        when(trailingIconState) {
+                            TrailingIconState.READY_TO_DELETE -> {
+                                onTextChange("")
+                                trailingIconState = TrailingIconState.READY_TO_CLOSE
+                            }
+                            TrailingIconState.READY_TO_CLOSE -> {
+                                if(text.isNotEmpty()) {
+                                    onTextChange("")
+                                } else {
+                                    onCloseClicked()
+                                    trailingIconState = TrailingIconState.READY_TO_DELETE
+                                }
+                            }
+                        }
                     }
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Close,
-                        contentDescription = "Close Icon",
+                        contentDescription = stringResource(id = R.string.close_icon),
                         tint = MaterialTheme.colorScheme.topAppBarContentColor
                     )
                 }
