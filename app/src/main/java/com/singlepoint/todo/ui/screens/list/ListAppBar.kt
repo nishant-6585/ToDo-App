@@ -255,9 +255,8 @@ fun AppSearchBar(
         modifier = Modifier
             .fillMaxWidth()
             .height(TOP_APP_BAR_HEIGHT),
-        shadowElevation = 4.dp,
         color = MaterialTheme.colorScheme.topAppBarBackgroundColor,
-
+        shadowElevation = 4.dp
     ) {
         TextField(
             value = text,
