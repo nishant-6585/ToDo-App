@@ -28,7 +28,7 @@ val NonePriorityColor = Color(0xFFFFFFFF)
 
 val ColorScheme.taskItemTextColor: Color
     @Composable
-    get() = if (isSystemInDarkTheme()) DarkGray else LightGray
+    get() = if (!isSystemInDarkTheme()) DarkGray else LightGray
 val ColorScheme.taskItemBackgroundColor: Color
     @Composable
     get() = if (!isSystemInDarkTheme()) Color.White else DarkGray
