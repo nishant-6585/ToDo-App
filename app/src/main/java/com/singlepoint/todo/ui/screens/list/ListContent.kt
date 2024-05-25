@@ -27,20 +27,25 @@ import com.singlepoint.todo.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.singlepoint.todo.ui.theme.TASK_ITEM_ELEVATION
 import com.singlepoint.todo.ui.theme.taskItemBackgroundColor
 import com.singlepoint.todo.ui.theme.taskItemTextColor
+import com.singlepoint.todo.util.RequestState
 
 @Composable
 fun ListContent(
     paddingValues: PaddingValues,
-    tasks: List<ToDoTask>,
+    tasks: RequestState<List<ToDoTask>>,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    if (tasks.isEmpty()) {
-        EmptyContent(paddingValues)
-    } else {
-        DisplayTask(paddingValues = paddingValues, tasks = tasks) {
-            navigateToTaskScreen
-        }
-    }
+   if(tasks is RequestState.Success) {
+       if(tasks.data.isEmpty()) {
+           EmptyContent(paddingValues = paddingValues)
+       } else {
+           DisplayTask(
+               paddingValues = paddingValues,
+               tasks = tasks.data,
+               navigateToTaskScreen = navigateToTaskScreen
+           )
+       }
+   }
 }
 
 @Composable

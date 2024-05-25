@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.singlepoint.todo.R
 import com.singlepoint.todo.ui.theme.MediumGray
+import com.singlepoint.todo.ui.theme.SAD_ICON_SIZE
 
 @Composable
 fun EmptyContent(
@@ -34,7 +35,7 @@ fun EmptyContent(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Icon(
-            modifier = Modifier.size(200.dp),
+            modifier = Modifier.size(SAD_ICON_SIZE),
             painter = painterResource(id = R.drawable.ic_sad_face),
             contentDescription = stringResource(id = R.string.sad_face_icon),
             tint = MediumGray
