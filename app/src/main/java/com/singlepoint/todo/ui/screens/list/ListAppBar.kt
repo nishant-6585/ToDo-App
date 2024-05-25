@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -32,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.singlepoint.todo.R
 import com.singlepoint.todo.component.PriorityItem
 import com.singlepoint.todo.data.models.Priority
@@ -61,7 +63,6 @@ fun ListAppBar(
                 onDeleteClicked = {}
             )
         }
-
         else -> {
             AppSearchBar(
                 text = searchTextState,
@@ -238,7 +239,6 @@ fun DeleteAllAction(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppSearchBar(
     text: String,
@@ -256,9 +256,9 @@ fun AppSearchBar(
             .fillMaxWidth()
             .height(TOP_APP_BAR_HEIGHT),
         shadowElevation = 4.dp,
-        color = Color.Blue,
-    ) {
+        color = MaterialTheme.colorScheme.topAppBarBackgroundColor,
 
+    ) {
         TextField(
             value = text,
             onValueChange = {
@@ -269,7 +269,8 @@ fun AppSearchBar(
                     modifier = Modifier
                         .alpha(0.5f),
                     text = stringResource(id = R.string.search_placeholder),
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.topAppBarContentColor,
+                    fontSize = 20.sp
                 )
             },
             textStyle = TextStyle(
@@ -326,21 +327,10 @@ fun AppSearchBar(
                     onSearchClicked(text)
                 }
             ),
-
-           /* colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = Color.Blue,
-                titleContentColor = Color.White,
-                navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
-                actionIconContentColor = MaterialTheme.colorScheme.onSecondary
-            ),*/
-
-            /*colors = TextFieldDefaults.textFieldColors(
-                cursorColor = MaterialTheme.colorScheme.topAppBarContentColor,
-                focusedIndicatorColor = Color.Transparent,
-                disabledIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                containerColor = Color.White
-            ),*/
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color.Transparent, // Transparent when focused
+                unfocusedContainerColor = Color.Transparent // Transparent when unfocused
+            )
         )
     }
 }
