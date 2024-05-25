@@ -10,9 +10,9 @@ activityCompose = "1.9.0"
 composeBom = "2024.05.00"
 room_version = "2.6.1"
 datastore = "1.1.1"
-hiltVersion = "2.44"
-kspPlugin = "1.9.24-1.0.20"
+hiltVersion = "2.51.1"
 nav_version = "2.7.7"
+androidx_hilt_compiler_version = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,6 +35,7 @@ androidx-room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "
 androidx-datastore = {group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore"}
 dagger-hilt = {group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion"}
 dagger-hilt-compiler = {group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion"}
+androidx-hilt-compiler = {group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidx_hilt_compiler_version"}
 androidx-navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version.ref = "nav_version"}
 
 [plugins]
@@ -42,5 +43,5 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidx-room = {id = "androidx.room", version.ref = "room_version"}
 dagger-hilt = {id = "com.google.dagger.hilt.android", version.ref = "hiltVersion"}
-ksp = {id = "com.google.devtools.ksp", version.ref="kspPlugin" }
+org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 

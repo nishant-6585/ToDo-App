@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.androidx.room)
     alias(libs.plugins.dagger.hilt)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
 android {
@@ -78,12 +78,19 @@ dependencies {
     implementation(libs.androidx.room)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
+
     implementation(libs.androidx.datastore)
+
     implementation(libs.dagger.hilt)
-    annotationProcessor(libs.dagger.hilt.compiler)
+    kapt(libs.dagger.hilt.compiler)
+    //kapt(libs.androidx.hilt.compiler)
 
     //navigation with compose
     implementation(libs.androidx.navigation.compose)
 
 
+}
+
+kapt {
+    correctErrorTypes = true
 }

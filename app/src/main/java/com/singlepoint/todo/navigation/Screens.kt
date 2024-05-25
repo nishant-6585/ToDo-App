@@ -1,6 +1,5 @@
 package com.singlepoint.todo.navigation
 
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.singlepoint.todo.util.Action
 import com.singlepoint.todo.util.Constants.LIST_SCREEN
