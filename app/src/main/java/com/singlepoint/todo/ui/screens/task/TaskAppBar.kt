@@ -87,10 +87,10 @@ fun ExistingTaskAppBar(
         ),
         actions = {
             DeleteAction {
-                navigateToListScreen
+                navigateToListScreen(it)
             }
             UpdateAction {
-                navigateToListScreen
+                navigateToListScreen(it)
             }
 
         }
