@@ -1,5 +1,6 @@
 package com.singlepoint.todo.ui.screens.list
 
+import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,24 +29,59 @@ import com.singlepoint.todo.ui.theme.TASK_ITEM_ELEVATION
 import com.singlepoint.todo.ui.theme.taskItemBackgroundColor
 import com.singlepoint.todo.ui.theme.taskItemTextColor
 import com.singlepoint.todo.util.RequestState
+import com.singlepoint.todo.util.SearchAppBarState
 
 @Composable
 fun ListContent(
     paddingValues: PaddingValues,
-    tasks: RequestState<List<ToDoTask>>,
+    allTasks: RequestState<List<ToDoTask>>,
+    searchedTasks: RequestState<List<ToDoTask>>,
+    searchAppBarState: SearchAppBarState,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-   if(tasks is RequestState.Success) {
-       if(tasks.data.isEmpty()) {
-           EmptyContent(paddingValues = paddingValues)
-       } else {
-           DisplayTask(
+   if(searchAppBarState == SearchAppBarState.TRIGGERED) {
+       if(searchedTasks is RequestState.Success) {
+           HandleListContent(
                paddingValues = paddingValues,
-               tasks = tasks.data,
+               task = searchedTasks.data,
                navigateToTaskScreen = navigateToTaskScreen
+           )
+       } else {
+           if(allTasks is RequestState.Success) {
+               HandleListContent(
+                   paddingValues = paddingValues,
+                   task = allTasks.data,
+                   navigateToTaskScreen = navigateToTaskScreen
+               )
+           }
+       }
+   } else {
+       if(allTasks is RequestState.Success) {
+           HandleListContent(
+               paddingValues = paddingValues,
+               task = allTasks.data,
+               navigateToTaskScreen = navigateToTaskScreen,
            )
        }
    }
+}
+
+@Composable
+fun HandleListContent(
+    paddingValues: PaddingValues,
+    task: List<ToDoTask>,
+    navigateToTaskScreen: (taskId: Int) -> Unit
+) {
+    Log.d("HandleListContent", "ListContent -> task: $task")
+    if(task.isEmpty()) {
+        EmptyContent(paddingValues = paddingValues)
+    } else {
+        DisplayTask(
+            paddingValues = paddingValues,
+            tasks = task,
+            navigateToTaskScreen = navigateToTaskScreen
+        )
+    }
 }
 
 @Composable
@@ -54,6 +90,7 @@ fun DisplayTask(
     tasks: List<ToDoTask>,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
+    Log.d("DisplayTask", "DisplayTask: $tasks")
     LazyColumn(modifier = Modifier.padding(paddingValues)) {
         items(
             items = tasks,

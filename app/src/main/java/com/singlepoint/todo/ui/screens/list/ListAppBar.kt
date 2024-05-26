@@ -43,6 +43,7 @@ import com.singlepoint.todo.ui.theme.Typography
 import com.singlepoint.todo.ui.theme.topAppBarBackgroundColor
 import com.singlepoint.todo.ui.theme.topAppBarContentColor
 import com.singlepoint.todo.ui.viewmodels.SharedViewModel
+import com.singlepoint.todo.util.Action
 import com.singlepoint.todo.util.SearchAppBarState
 import com.singlepoint.todo.util.TrailingIconState
 
@@ -60,11 +61,13 @@ fun ListAppBar(
                     sharedViewModel.searchAppBarState.value = SearchAppBarState.OPENED
                 },
                 onSortClicked = {},
-                onDeleteClicked = {}
+                onDeleteAllClicked = {
+                    sharedViewModel.action.value = Action.DELETE_ALL
+                }
             )
         }
         else -> {
-            AppSearchBar(
+            SearchAppBar(
                 text = searchTextState,
                 onTextChange = { newText ->
                     sharedViewModel.searchTextState.value = newText
@@ -73,7 +76,9 @@ fun ListAppBar(
                     sharedViewModel.searchAppBarState.value = SearchAppBarState.CLOSED
                     sharedViewModel.searchTextState.value = ""
                 },
-                onSearchClicked = {}
+                onSearchClicked = {
+                    sharedViewModel.searchDatabase(searchQuery = it)
+                }
             )
         }
     }
@@ -84,7 +89,7 @@ fun ListAppBar(
 fun DefaultListAppBar(
     onSearchClicked: () -> Unit,
     onSortClicked: (Priority) -> Unit,
-    onDeleteClicked: () -> Unit
+    onDeleteAllClicked: () -> Unit
 ) {
     TopAppBar(
         title = {
@@ -97,7 +102,7 @@ fun DefaultListAppBar(
             ListAppBarActions(
                 onSearchClicked,
                 onSortClicked,
-                onDeleteClicked
+                onDeleteAllClicked
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
@@ -111,7 +116,7 @@ fun DefaultListAppBar(
 fun ListAppBarActions(
     onSearchClicked: () -> Unit,
     onSortClicked: (Priority) -> Unit,
-    onDeleteClicked: () -> Unit
+    onDeleteAllClicked: () -> Unit
 ) {
     SearchAction(
         onSearchClicked = onSearchClicked
@@ -120,7 +125,7 @@ fun ListAppBarActions(
         onSortClicked = onSortClicked
     )
     DeleteAllAction(
-        onDeleteClicked = onDeleteClicked
+        onDeleteAllClicked = onDeleteAllClicked
     )
 }
 
@@ -205,7 +210,7 @@ fun SortAction(
 
 @Composable
 fun DeleteAllAction(
-    onDeleteClicked: () -> Unit
+    onDeleteAllClicked: () -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -232,7 +237,7 @@ fun DeleteAllAction(
                 },
                 onClick = {
                     expanded = false
-                    onDeleteClicked()
+                    onDeleteAllClicked()
                 }
             )
         }
@@ -240,7 +245,7 @@ fun DeleteAllAction(
 }
 
 @Composable
-fun AppSearchBar(
+fun SearchAppBar(
     text: String,
     onTextChange: (String) -> Unit,
     onCloseClicked: () -> Unit,
@@ -340,7 +345,7 @@ private fun DefaultListAppBarPreview() {
     DefaultListAppBar(
         onSearchClicked = {},
         onSortClicked = {},
-        onDeleteClicked = {}
+        onDeleteAllClicked = {}
     )
 
 }
@@ -348,7 +353,7 @@ private fun DefaultListAppBarPreview() {
 @Composable
 @Preview
 private fun SearchAppBarPreview() {
-    AppSearchBar(
+    SearchAppBar(
         text = "Search",
         onTextChange = {},
         onCloseClicked = {},
