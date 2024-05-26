@@ -57,7 +57,7 @@ fun NewTaskAppBar(
         ),
         actions = {
             AddAction {
-
+                navigateToListScreen(it)
             }
         }
     )
