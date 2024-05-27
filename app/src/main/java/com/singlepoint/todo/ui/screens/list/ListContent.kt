@@ -36,34 +36,48 @@ fun ListContent(
     paddingValues: PaddingValues,
     allTasks: RequestState<List<ToDoTask>>,
     searchedTasks: RequestState<List<ToDoTask>>,
+    lowPriorityTasks: List<ToDoTask>,
+    highPriorityTasks: List<ToDoTask>,
+    sortState: RequestState<Priority>,
     searchAppBarState: SearchAppBarState,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-   if(searchAppBarState == SearchAppBarState.TRIGGERED) {
-       if(searchedTasks is RequestState.Success) {
-           HandleListContent(
-               paddingValues = paddingValues,
-               task = searchedTasks.data,
-               navigateToTaskScreen = navigateToTaskScreen
-           )
-       } else {
-           if(allTasks is RequestState.Success) {
-               HandleListContent(
-                   paddingValues = paddingValues,
-                   task = allTasks.data,
-                   navigateToTaskScreen = navigateToTaskScreen
-               )
-           }
-       }
-   } else {
-       if(allTasks is RequestState.Success) {
-           HandleListContent(
-               paddingValues = paddingValues,
-               task = allTasks.data,
-               navigateToTaskScreen = navigateToTaskScreen,
-           )
-       }
-   }
+    if (sortState is RequestState.Success) {
+        when {
+            searchAppBarState == SearchAppBarState.TRIGGERED -> {
+                if (searchedTasks is RequestState.Success) {
+                    HandleListContent(
+                        paddingValues = paddingValues,
+                        task = searchedTasks.data,
+                        navigateToTaskScreen = navigateToTaskScreen
+                    )
+                }
+            }
+            sortState.data == Priority.NONE -> {
+                if (allTasks is RequestState.Success) {
+                    HandleListContent(
+                        paddingValues = paddingValues,
+                        task = allTasks.data,
+                        navigateToTaskScreen = navigateToTaskScreen
+                    )
+                }
+            }
+            sortState.data == Priority.LOW -> {
+                HandleListContent(
+                    paddingValues = paddingValues,
+                    task = lowPriorityTasks,
+                    navigateToTaskScreen = navigateToTaskScreen
+                )
+            }
+            sortState.data == Priority.HIGH -> {
+                HandleListContent(
+                    paddingValues = paddingValues,
+                    task = highPriorityTasks,
+                    navigateToTaskScreen = navigateToTaskScreen
+                )
+            }
+        }
+    }
 }
 
 @Composable
@@ -73,7 +87,7 @@ fun HandleListContent(
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
     Log.d("HandleListContent", "ListContent -> task: $task")
-    if(task.isEmpty()) {
+    if (task.isEmpty()) {
         EmptyContent(paddingValues = paddingValues)
     } else {
         DisplayTask(
@@ -97,7 +111,7 @@ fun DisplayTask(
             key = { task ->
                 task.id
             }
-        ){task ->
+        ) { task ->
             TaskItem(
                 toDoTask = task,
                 navigateToTaskScreen = navigateToTaskScreen
@@ -117,7 +131,7 @@ fun TaskItem(
             .padding(),
         color = MaterialTheme.colorScheme.taskItemBackgroundColor,
         shape = RectangleShape,
-        shadowElevation =TASK_ITEM_ELEVATION,
+        shadowElevation = TASK_ITEM_ELEVATION,
         onClick = {
             navigateToTaskScreen(toDoTask.id)
         }
@@ -136,10 +150,11 @@ fun TaskItem(
                     fontWeight = FontWeight.Bold,
                     maxLines = 1
                 )
-                
-                Box(modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
                     contentAlignment = Alignment.TopEnd
                 ) {
                     Canvas(
