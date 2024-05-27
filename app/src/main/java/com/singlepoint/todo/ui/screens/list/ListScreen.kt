@@ -76,7 +76,11 @@ fun ListScreen(
                 highPriorityTasks = highPriorityTasks,
                 sortState = sortState,
                 searchAppBarState = searchAppBarState,
-                navigateToTaskScreen = navigateToTaskScreen
+                navigateToTaskScreen = navigateToTaskScreen,
+                onSwipeToDelete = { action, toDoTask ->  
+                    sharedViewModel.action.value = action
+                    sharedViewModel.updateTaskFields(toDoTask)
+                }
             )
         },
         floatingActionButton = {
