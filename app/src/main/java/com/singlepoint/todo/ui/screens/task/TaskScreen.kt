@@ -37,9 +37,6 @@ fun TaskScreen(
                         } else {
                             displayToast(context = context)
                         }
-                        /*if (action == Action.DELETE) {
-                            sharedViewModel.deleteTask()
-                        }*/
                     }
                 }
             )
