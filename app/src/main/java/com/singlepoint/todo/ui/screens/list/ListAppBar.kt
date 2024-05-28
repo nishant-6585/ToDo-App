@@ -174,7 +174,7 @@ fun SortAction(
     ) {
         Icon(
             painter = painterResource(
-                id = R.drawable.baseline_filter_list_24
+                id = R.drawable.ic_filter_list
             ),
             contentDescription = stringResource(id = R.string.sort_action),
             tint = MaterialTheme.colorScheme.topAppBarContentColor
@@ -234,7 +234,7 @@ fun DeleteAllAction(
         onClick = { expanded = true }
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.baseline_more_vert_24),
+            painter = painterResource(id = R.drawable.icmore_vert),
             contentDescription = stringResource(id = R.string.delete_all_action),
             tint = MaterialTheme.colorScheme.topAppBarContentColor
         )

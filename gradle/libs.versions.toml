@@ -12,12 +12,18 @@ room_version = "2.6.1"
 datastore = "1.1.1"
 hiltVersion = "2.51.1"
 nav_version = "2.7.7"
+uiTestJunit4Android = "1.6.7"
+viewmodelCompose = "2.4.0"
+mockito = "3.12.4"
+androidxTest = "1.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-test-runner = {group = "androidx.test", name = "runner", version.ref = "androidxTest"}
+androidx-test-rules = {group = "androidx.test", name = "rules", version.ref = "androidxTest"}
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -35,6 +41,10 @@ androidx-datastore = {group = "androidx.datastore", name = "datastore-preference
 dagger-hilt = {group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion"}
 dagger-hilt-compiler = {group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion"}
 androidx-navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version.ref = "nav_version"}
+androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android", version.ref = "uiTestJunit4Android" }
+androidx-lifecycle-viewmodel = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewmodelCompose"}
+org-mockito-core = {group = "org.mockito", name = "mockito-core", version.ref = "mockito"}
+org-mockito-inline = {group = "org.mockito", name = "mockito-inline", version.ref = "mockito"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
