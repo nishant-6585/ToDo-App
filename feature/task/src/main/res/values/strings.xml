@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_task">Remove \'%1$s\'?</string>
+    <string name="delete_task_confirmation">Are you sure you want to remove \'%1$s\'?</string>
+    <string name="close_icon">Close Icon</string>
+    <string name="update_icon">Update Icon</string>
+    <string name="add_task">Add Task</string>
+    <string name="delete_icon">Delete Icon</string>
+    <string name="back_arrow">Back Arrow</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="list_screen_title">Tasks</string>
+    <string name="search_action">Search Tasks</string>
+
+    <string name="sort_action">Sort Task</string>
+    <string name="sad_face_icon">Sad Face Icon</string>
+    <string name="no_tasks_text">Press the + button to add a TODO item</string>
+    <string name="search_placeholder">Search</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="close_icon">Close Icon</string>
+    <string name="delete_icon">Delete Icon</string>
+    <string name="add_button">Add Button</string>
+
+    <string name="delete_all_action">Delete All</string>
+    <string name="delete_all_tasks">Remove All Tasks?</string>
+    <string name="delete_all_tasks_confirmation">Are you sure you want to remove all Tasks? There is no going back after this action.</string>
+</resources>

@@ -5,5 +5,6 @@ plugins {
     alias(libs.plugins.androidx.room) apply false
     alias(libs.plugins.dagger.hilt) apply false
     alias(libs.plugins.org.jetbrains.kotlin.kapt) apply false
+    alias(libs.plugins.android.library) apply false
 
 }

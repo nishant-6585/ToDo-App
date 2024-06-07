@@ -21,3 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "ToDoApp"
 include(":app")
+include(":core:ui")
+include(":core:util")
+include(":data:room")
+include(":feature:taskList")
+include(":feature:splash")
+include(":feature:task")
