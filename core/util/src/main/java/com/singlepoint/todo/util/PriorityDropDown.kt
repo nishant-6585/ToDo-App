@@ -29,10 +29,10 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.singlepoint.todo.data.models.Priority
 import com.singlepoint.todo.ui.R
 import com.singlepoint.todo.ui.theme.PRIORITY_DROP_DOWN_HEIGHT
 import com.singlepoint.todo.ui.theme.PRIORITY_INDICATOR_SIZE
-import com.singlepoint.todo.util.data.models.Priority
 
 @Composable
 fun PriorityDropDown(

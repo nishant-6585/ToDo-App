@@ -1,4 +1,4 @@
-package com.singlepoint.todo.room.models
+package com.singlepoint.todo.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

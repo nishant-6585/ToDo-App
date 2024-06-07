@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import com.singlepoint.todo.navigation.destination.listComposable
 import com.singlepoint.todo.navigation.destination.splashComposable
 import com.singlepoint.todo.navigation.destination.taskComposable
-import com.singlepoint.todo.tasklist.viewmodels.SharedViewModel
+import com.singlepoint.todo.presentaion.viewmodels.SharedViewModel
 import com.singlepoint.todo.util.Constants.SPLASH_SCREEN
 import com.singlepoint.todo.util.Screens
 
