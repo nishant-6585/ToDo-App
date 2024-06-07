@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.singlepoint.todo.navigation.SetupNavigation
 import com.singlepoint.todo.ui.theme.ToDoAppTheme
-import com.singlepoint.todo.presentaion.viewmodels.SharedViewModel
+import com.singlepoint.todo.ui.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

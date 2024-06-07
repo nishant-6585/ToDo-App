@@ -7,8 +7,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.singlepoint.todo.presentaion.screens.task.TaskScreen
-import com.singlepoint.todo.presentaion.viewmodels.SharedViewModel
+import com.singlepoint.todo.ui.screens.task.TaskScreen
+import com.singlepoint.todo.ui.viewmodels.SharedViewModel
 import com.singlepoint.todo.util.Action
 import com.singlepoint.todo.util.Constants
 import com.singlepoint.todo.util.Constants.TASK_SCREEN

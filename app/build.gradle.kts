@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.singlepoint.todo"
-    compileSdk = ProjectConfig.compileSdk
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.singlepoint.todo"
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
+        minSdk = 24
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -43,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = ProjectConfig.extensionVersion
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -93,10 +93,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.lifecycle.viewmodel)
-
-    implementation(project(":core:ui"))
-    implementation(project(":core:util"))
-    implementation(project(":data:room"))
 
 
 }

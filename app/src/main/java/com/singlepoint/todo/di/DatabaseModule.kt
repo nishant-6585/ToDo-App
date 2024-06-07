@@ -2,7 +2,7 @@ package com.singlepoint.todo.di
 
 import android.content.Context
 import androidx.room.Room
-import com.singlepoint.todo.room.ToDoDatabase
+import com.singlepoint.todo.data.ToDoDatabase
 import com.singlepoint.todo.util.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides

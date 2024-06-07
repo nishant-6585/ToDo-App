@@ -16,8 +16,6 @@ uiTestJunit4Android = "1.6.7"
 viewmodelCompose = "2.8.0"
 mockito = "3.12.4"
 androidxTest = "1.5.0"
-appcompat = "1.7.0"
-material = "1.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,8 +45,6 @@ androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-te
 androidx-lifecycle-viewmodel = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewmodelCompose"}
 org-mockito-core = {group = "org.mockito", name = "mockito-core", version.ref = "mockito"}
 org-mockito-inline = {group = "org.mockito", name = "mockito-inline", version.ref = "mockito"}
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -56,5 +52,4 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 androidx-room = {id = "androidx.room", version.ref = "room_version"}
 dagger-hilt = {id = "com.google.dagger.hilt.android", version.ref = "hiltVersion"}
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-android-library = { id = "com.android.library", version.ref = "agp" }
 
