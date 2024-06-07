@@ -10,10 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.singlepoint.todo.data.models.Priority
 import com.singlepoint.todo.ui.theme.LARGE_PADDING
 import com.singlepoint.todo.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.singlepoint.todo.ui.theme.Typography
+import com.singlepoint.todo.util.data.models.Priority
 
 @Composable
 fun PriorityItem(priority: Priority) {

@@ -7,9 +7,9 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.singlepoint.todo.data.models.Priority
 import com.singlepoint.todo.util.Constants.PREFERENCE_KEY
 import com.singlepoint.todo.util.Constants.PREFERENCE_NAME
+import com.singlepoint.todo.util.data.models.Priority
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow

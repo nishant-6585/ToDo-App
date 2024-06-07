@@ -1,7 +1,7 @@
 package com.singlepoint.todo.room.repository
 
-import com.singlepoint.todo.data.models.ToDoTask
 import com.singlepoint.todo.room.ToDoDao
+import com.singlepoint.todo.room.models.ToDoTask
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
