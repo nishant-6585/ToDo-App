@@ -6,8 +6,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.singlepoint.todo.ui.screens.list.ListScreen
-import com.singlepoint.todo.ui.viewmodels.SharedViewModel
+import com.singlepoint.todo.presentaion.screens.list.ListScreen
+import com.singlepoint.todo.presentaion.viewmodels.SharedViewModel
 import com.singlepoint.todo.util.Constants.LIST_ARGUMENT_KEY
 import com.singlepoint.todo.util.Constants.LIST_SCREEN
 import com.singlepoint.todo.util.toAction
