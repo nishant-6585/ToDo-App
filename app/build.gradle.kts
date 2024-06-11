@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.androidx.room)
     alias(libs.plugins.dagger.hilt)
+    /*alias(libs.plugins.androidx.room)*/
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
@@ -51,9 +51,9 @@ android {
         }
     }
 
-    room {
+   /* room {
         schemaDirectory("$projectDir/schemas")
-    }
+    }*/
 
 }
 
@@ -67,8 +67,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
     implementation(libs.androidx.ui.test.junit4.android)
-    implementation(project(":feature:taskList"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -81,11 +81,11 @@ dependencies {
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.rules)
 
-    implementation(libs.androidx.room)
+    /*implementation(libs.androidx.room)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
-    implementation(libs.androidx.datastore)
+    implementation(libs.androidx.datastore)*/
 
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
@@ -93,11 +93,12 @@ dependencies {
     //navigation with compose
     implementation(libs.androidx.navigation.compose)
 
-    implementation(libs.androidx.lifecycle.viewmodel)
+    //implementation(libs.androidx.lifecycle.viewmodel)
 
     implementation(project(":core:ui"))
     implementation(project(":core:util"))
     implementation(project(":core:navigation"))
+    implementation(project(":core:di"))
     implementation(project(":data:room"))
     implementation(project(":feature:taskList"))
     implementation(project(":feature:splash"))
