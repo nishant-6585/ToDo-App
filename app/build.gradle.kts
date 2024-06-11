@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.dagger.hilt)
-    /*alias(libs.plugins.androidx.room)*/
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
@@ -51,10 +50,6 @@ android {
         }
     }
 
-   /* room {
-        schemaDirectory("$projectDir/schemas")
-    }*/
-
 }
 
 dependencies {
@@ -80,12 +75,6 @@ dependencies {
     testImplementation(libs.org.mockito.inline)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.rules)
-
-    /*implementation(libs.androidx.room)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
-
-    implementation(libs.androidx.datastore)*/
 
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
