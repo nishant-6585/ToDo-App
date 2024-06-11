@@ -97,6 +97,7 @@ dependencies {
 
     implementation(project(":core:ui"))
     implementation(project(":core:util"))
+    implementation(project(":core:navigation"))
     implementation(project(":data:room"))
     implementation(project(":feature:taskList"))
     implementation(project(":feature:splash"))
