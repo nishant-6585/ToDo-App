@@ -337,6 +337,7 @@ fun SearchAppBar(
                         when (trailingIconState) {
                             TrailingIconState.READY_TO_DELETE -> {
                                 onTextChange("")
+                                onSearchClicked("")
                                 trailingIconState = TrailingIconState.READY_TO_CLOSE
                             }
 
