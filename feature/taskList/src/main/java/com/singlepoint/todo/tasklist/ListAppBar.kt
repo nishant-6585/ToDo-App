@@ -20,11 +20,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
@@ -46,6 +42,9 @@ import com.singlepoint.todo.util.PriorityItem
 import com.singlepoint.todo.util.SearchAppBarState
 import com.singlepoint.todo.util.TrailingIconState
 import com.singlepoint.todo.util.data.models.Priority
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.Job
 
 
 @Composable
@@ -271,6 +270,10 @@ fun SearchAppBar(
         mutableStateOf(TrailingIconState.READY_TO_DELETE)
     }
 
+    // Coroutine scope to handle debounce
+    val coroutineScope = rememberCoroutineScope()
+    var debounceJob by remember { mutableStateOf<Job?>(null) }
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -282,6 +285,15 @@ fun SearchAppBar(
             value = text,
             onValueChange = {
                 onTextChange(it)
+                /// Cancel previous debounce job
+                debounceJob?.cancel()
+
+                // Use coroutine to debounce search operation
+                debounceJob = coroutineScope.launch {
+                    // Add delay of 2 seconds before triggering search
+                    delay(2000)
+                    onSearchClicked(it)
+                }
             },
             placeholder = {
                 Text(
