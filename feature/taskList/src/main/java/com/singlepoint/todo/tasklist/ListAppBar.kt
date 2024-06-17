@@ -20,7 +20,12 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
@@ -30,21 +35,21 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.singlepoint.todo.tasklist.viewmodels.SharedViewModel
+import com.singlepoint.todo.ui.component.DisplayAlertDialog
 import com.singlepoint.todo.ui.theme.LARGE_PADDING
 import com.singlepoint.todo.ui.theme.TOP_APP_BAR_HEIGHT
 import com.singlepoint.todo.ui.theme.Typography
 import com.singlepoint.todo.ui.theme.topAppBarBackgroundColor
 import com.singlepoint.todo.ui.theme.topAppBarContentColor
-import com.singlepoint.todo.ui.component.DisplayAlertDialog
-import com.singlepoint.todo.tasklist.viewmodels.SharedViewModel
 import com.singlepoint.todo.util.Action
 import com.singlepoint.todo.util.PriorityItem
 import com.singlepoint.todo.util.SearchAppBarState
 import com.singlepoint.todo.util.TrailingIconState
 import com.singlepoint.todo.util.data.models.Priority
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.Job
 
 
 @Composable
@@ -285,6 +290,8 @@ fun SearchAppBar(
             value = text,
             onValueChange = {
                 onTextChange(it)
+                //Debouncing says “wait until this function hasn’t been called in x time,
+                //and then run it”. All the prior calls get dropped.
                 /// Cancel previous debounce job
                 debounceJob?.cancel()
 
